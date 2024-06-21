@@ -41,8 +41,8 @@ class ConvNet(nn.Module):
         self.af = nn.LeakyReLU()
 
     def forward(self, x):
-        out = self.pool(self.af(self.conv1(x)))
-        out = self.pool(self.af(self.conv2(out)))
+        out = self.pool(self.conv1(x))
+        out = self.pool(self.conv2(out))
         #out = out.view(-1, 16*4*4) # Flatten output of Convolutional
         out = torch.flatten(out, 1)
         out = self.af(self.fc1(out))
